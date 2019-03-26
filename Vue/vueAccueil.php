@@ -37,12 +37,13 @@
 
     echo '<h2>Les personnnages du film Shrek 2</h2>';
 
-    echo '<table><tr><th></th><th></th><th>Nom</th><th>Genre</th><th>Jambes</th><th>Autres détails</th></tr>';
+    echo '<table><tr><th></th><th></th><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th></tr>';
     while ($donnees = $reponsePlayers->fetch())
     {
-        echo '<tr><td><a href="index.php?action=modifierPlayer&id=' . $donnees['id'] . '">[modifier]</a></td><td><a href="index.php?action=supprimerPlayer&id=' . 
-            $donnees['id'] . '">[supprimer]</a></td><td>' .
+        echo '<tr><td><a href="index.php?action=modifierPlayer&id=' . $donnees['player_id'] . '">[modifier]</a></td><td><a href="index.php?action=supprimerPlayer&id=' . 
+            $donnees['player_id'] . '">[supprimer]</a></td><td>' .
             htmlspecialchars($donnees['name']) . '</td><td>' . 
+            htmlspecialchars($donnees['courriel']) . '</td><td>' . 
             htmlspecialchars($donnees['gender']) . '</td><td>' . 
             htmlspecialchars($donnees['number_of_legs']) . '</td><td>' . 
             htmlspecialchars($donnees['other_player_details']) . '</td></tr>';

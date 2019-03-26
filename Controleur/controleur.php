@@ -24,16 +24,13 @@ function ajouterPersonnage($ajoutPerso) {
 
 // Ajoute un commentaire à un article
 function modifierEvenement($id) {
-    // AJouter le commentaire à l'aide du modèle
-    $event = getEvent($id);
 
-    require 'Vue\vueModifier.php';
+    require 'Vue\vueModifierEvent.php';
 }
 
 function modifierPersonnage($ajoutPerso) {
-    $player = getPlayer($id);
 
-    require 'Vue\vueModifier.php';
+    require 'Vue\vueModifierPlayer.php';
 }
 
 function supprimerEvenement($id) {

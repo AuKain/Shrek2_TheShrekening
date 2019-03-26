@@ -44,6 +44,7 @@
         <label for="description">Description</label> : <textarea type="text" name="description" id="description" ><?php echo htmlspecialchars($donnees['description']); ?></textarea> <br />
         <label for="other_info">Autres détails</label> : <textarea type="text" name="other_info" id="other_info" ><?php echo htmlspecialchars($donnees['other_details']); ?></textarea><br />
         <input type="hidden" name="id" value="<?php echo $donnees['id']; ?>" />
+        <input type="hidden" name="table" value="Event" />
         <input type="submit" value="Envoyer" /><br />
         <a href="index.php">Annuler les modifications</a>
     </p>
