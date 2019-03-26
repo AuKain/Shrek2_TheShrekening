@@ -95,13 +95,13 @@
     <h2>Ajouter un personnage au film Shrek 2!</h2>
     <p>
         <label for="name">Personnage</label> : <input type="text" name="name" id="name" /><br />
-        <label for="courriel">Adresse courriel</label> : <input type="text" name="courriel" id="courriel" /><br />
+        <label for="courriel">Adresse courriel</label> : <input type="text" name="courriel" id="courriel" value="exemple@domaine.com" /><br />
         <label for="gender">Genre</label> : 
             <select id="gender" name="gender" >
                 <option value="M">Homme</option>
                 <option value="F">Femme</option>
             </select><br />
-        <label for="number_of_legs">Nombre de jambes</label> : <input type="number" name="number_of_legs" id="number_of_legs" min="1" /><br />
+        <label for="number_of_legs">Nombre de jambes</label> : <input type="number" name="number_of_legs" id="number_of_legs" min="1" value="2" /><br />
         <label for="other_player_details">Autres détails</label> : <textarea type="text" name="other_player_details" id="other_player_details" >Autres détails ici</textarea><br />
         <input type="hidden" name="table" value="Player" />
         <input type="submit" value="Envoyer" />

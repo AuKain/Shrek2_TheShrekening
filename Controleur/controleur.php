@@ -34,13 +34,13 @@ function modifierPersonnage($ajoutPerso) {
 }
 
 function supprimerEvenement($id) {
-    $event = getEvent($id);
+    $table = 'Event';
 
     require 'Vue\vueConfirmation.php';
 }
 
 function supprimerPersonnage($id) {
-    $player = getPlayer($id);
+    $table = 'Player';
 
     require 'Vue\vueConfirmation.php';
 }
