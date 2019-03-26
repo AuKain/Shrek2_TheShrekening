@@ -13,19 +13,33 @@
         <label for="event">Événement</label> : <input type="text" name="event" id="event" value="<?php echo htmlspecialchars($donnees['event_name']); ?>" /><br />
         <label for="place">Endroit</label> : 
             <select id="place" name="place" >
-                <option value="1" <?php if ($donnees['place_name'] == 'Marais') echo 'Selected' ?>>Marais</option>
-                <option value="2" <?php if ($donnees['place_name'] == 'Château') echo 'Selected' ?>>Château</option>
-                <option value="3" <?php if ($donnees['place_name'] == 'Forêt') echo 'Selected' ?>>Forêt</option>
-                <option value="4" <?php if ($donnees['place_name'] == 'Far Far Away') echo 'Selected' ?>>Far Far Away</option>
+
+                <?php
+                    $reponsePlaces = getPlaces();
+
+                    while ($places = $reponsePlaces->fetch())
+                    {
+                        echo '<option value="' . htmlspecialchars($places['place_id']) . '" ';
+                        if ($donnees['place_name'] == $places['place_name']) echo 'Selected';
+                        echo ' >' . htmlspecialchars($places['place_name']) . '</option>';
+                    }
+                    $reponsePlaces->closeCursor();
+                ?>
+
             </select><br />
         <label for="player">Personnage</label> : 
             <select id="player" name="player" >
-                <option value="1" <?php if ($donnees['player_name'] == 'Fiona') echo 'Selected' ?>>Fiona</option>
-                <option value="2" <?php if ($donnees['player_name'] == 'Shrek') echo 'Selected' ?>>Shrek</option>
-                <option value="3" <?php if ($donnees['player_name'] == 'Donkey') echo 'Selected' ?>>Donkey</option>
-                <option value="4" <?php if ($donnees['player_name'] == 'Puss in boots') echo 'Selected' ?>>Puss in boots</option>
-                <option value="5" <?php if ($donnees['player_name'] == 'Prince Charming') echo 'Selected' ?>>Prince Charming</option>
-                <option value="6" <?php if ($donnees['player_name'] == 'Dragon') echo 'Selected' ?>>Dragon</option>
+                <?php 
+                    $reponsePlayers = getPlayers();
+
+                    while ($players = $reponsePlayers->fetch())
+                    {
+                        echo '<option value="' . htmlspecialchars($players['player_id']) . '" ';
+                        if ($donnees['player_name'] == $players['name']) echo 'Selected';
+                        echo ' >' . htmlspecialchars($players['name']) . '</option>';
+                    }
+                    $reponsePlayers->closeCursor();
+                ?>
             </select><br />
         <label for="description">Description</label> : <textarea type="text" name="description" id="description" ><?php echo htmlspecialchars($donnees['description']); ?></textarea> <br />
         <label for="other_info">Autres détails</label> : <textarea type="text" name="other_info" id="other_info" ><?php echo htmlspecialchars($donnees['other_details']); ?></textarea><br />

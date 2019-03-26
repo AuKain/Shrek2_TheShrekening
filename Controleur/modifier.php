@@ -13,9 +13,9 @@ try {
             $req->execute(array($_POST['event'], $_POST['place'], $_POST['player'], $_POST['description'], $_POST['other_info'], $_POST['id']));
 
         } else
-            throw new Exception("Identifiant d'article incorrect");
+            throw new Exception("Identifiant d'événement incorrect");
     } else
-        throw new Exception("Aucun identifiant d'article");
+        throw new Exception("Aucun identifiant d'événement");
 } catch (Exception $e) {
     $msgErreur = $e->getMessage();
     require '..\Vue\vueErreur.php';

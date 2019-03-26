@@ -25,7 +25,43 @@ function getEvents() {
     return $events;
 }
 
-// Ajoute un événement associés à un article
+// Renvoie les informations sur un player
+function getPlayer($idPlayer) {
+    $bdd = getBdd();
+    $player = $bdd->prepare('SELECT * from Players where player_id = ?');
+    $event->execute(array($idPlayer));
+    if ($event->rowCount() == 1)
+        return $event->fetch();  // Accès à la première ligne de résultat
+    else
+        throw new Exception("Aucun article ne correspond à l'identifiant '$idPlayer'");
+}
+
+// Renvoie la liste de tous les players
+function getPlayers() {
+    $bdd = getBdd();
+    $players = $bdd->query('SELECT * from Players order by player_id');
+    return $players;
+}
+
+// Renvoie les informations sur une place
+function getPlace($idPlace) {
+    $bdd = getBdd();
+    $place = $bdd->prepare('SELECT * from Place where place_id = ?');
+    $event->execute(array($idPlace));
+    if ($event->rowCount() == 1)
+        return $event->fetch();  // Accès à la première ligne de résultat
+    else
+        throw new Exception("Aucun article ne correspond à l'identifiant '$idPlace'");
+}
+
+// Renvoie la liste de tous les places
+function getPlaces() {
+    $bdd = getBdd();
+    $places = $bdd->query('SELECT * from Places order by place_id');
+    return $places;
+}
+
+// Ajoute un événement
 function ajouterEvent($ajout) {
     $bdd = getBdd();
     $ajouts = $bdd->prepare('INSERT INTO Events (event_name, place_id, player_id, event_description, other_event_details) VALUES(?, ?, ?, ?, ?)');
@@ -36,6 +72,17 @@ function ajouterEvent($ajout) {
 // Modifie un événement
 function modifierEvent($id) {
     $bdd = getBdd();
+}
 
-    
+// Ajoute un personnage
+function ajouterPlayer($ajout) {
+    $bdd = getBdd();
+    $ajouts = $bdd->prepare('INSERT INTO Players (name, courriel, gender, number_of_legs, other_player_details) VALUES(?, ?, ?, ?, ?)');
+    $ajouts->execute(array($ajout['name'], $ajout['courriel'], $ajout['gender'], $ajout['number_of_legs'], $ajout['other_player_details']));
+    return $ajouts;
+}
+
+// Modifie un personnage
+function modifierPlayer($id) {
+
 }

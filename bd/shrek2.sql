@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2019 at 03:30 AM
+-- Generation Time: Mar 26, 2019 at 08:56 PM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Events` (
   `player_id` int(11) DEFAULT NULL,
   `event_description` varchar(255) DEFAULT NULL,
   `other_event_details` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Events`
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `Places` (
   `place_name` varchar(30) NOT NULL,
   `place_description` varchar(255) DEFAULT NULL,
   `other_place_details` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Places`
@@ -66,7 +66,8 @@ INSERT INTO `Places` (`place_id`, `place_name`, `place_description`, `other_plac
 (1, 'Marais', 'Marais de Shrek', 'Bloop bloop'),
 (2, 'Château', 'Château de Fiona', 'grand royaume'),
 (3, 'Forêt', 'Forêt mixte', 'juste une forêt'),
-(4, 'Far Far Away', 'Royaume de Far Far Away', 'Hollywood Blvd');
+(4, 'Far Far Away', 'Royaume de Far Far Away', 'Hollywood Blvd'),
+(5, 'Route', 'Une route quelconque', 'C''est long...');
 
 -- --------------------------------------------------------
 
@@ -77,6 +78,7 @@ INSERT INTO `Places` (`place_id`, `place_name`, `place_description`, `other_plac
 CREATE TABLE IF NOT EXISTS `Players` (
   `player_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
+  `courriel` varchar(254) DEFAULT NULL,
   `gender` char(1) DEFAULT NULL,
   `number_of_legs` int(11) NOT NULL,
   `other_player_details` varchar(255) DEFAULT NULL
@@ -86,13 +88,13 @@ CREATE TABLE IF NOT EXISTS `Players` (
 -- Dumping data for table `Players`
 --
 
-INSERT INTO `Players` (`player_id`, `name`, `gender`, `number_of_legs`, `other_player_details`) VALUES
-(1, 'Fiona', 'F', 2, 'La princesse'),
-(2, 'Shrek', 'M', 2, 'L''ogre'),
-(3, 'Donkey', 'M', 4, 'Eddy Murphy'),
-(4, 'Puss in boots', 'M', 4, 'Antonio Banderas'),
-(5, 'Prince Charming', 'M', 2, 'Le prince charmant'),
-(6, 'Dragon', 'F', 4, 'La dragonne');
+INSERT INTO `Players` (`player_id`, `name`, `courriel`, `gender`, `number_of_legs`, `other_player_details`) VALUES
+(1, 'Fiona', '', 'F', 2, 'La princesse'),
+(2, 'Shrek', '', 'M', 2, 'L''ogre'),
+(3, 'Donkey', '', 'M', 4, 'Eddy Murphy'),
+(4, 'Puss in boots', '', 'M', 4, 'Antonio Banderas'),
+(5, 'Prince Charming', '', 'M', 2, 'Le prince charmant'),
+(6, 'Dragon', '', 'F', 4, 'La dragonne');
 
 --
 -- Indexes for dumped tables
@@ -126,12 +128,12 @@ ALTER TABLE `Players`
 -- AUTO_INCREMENT for table `Events`
 --
 ALTER TABLE `Events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `Places`
 --
 ALTER TABLE `Places`
-  MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `Players`
 --

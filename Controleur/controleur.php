@@ -4,28 +4,46 @@ require 'Modele\Modele.php';
 
 // Affiche la liste de tous les articles du blog
 function accueil() {
-    $events = getEvents();
     require 'Vue\vueAccueil.php';
 }
 
 // Ajoute un événement à 
-function ajouter($ajout) {
-    // AJouter le commentaire à l'aide du modèle
+function ajouterEvenement($ajout) {
+    // AJouter l'événement à l'aide du modèle
     ajouterEvent($ajout);
     //Recharger la page pour mettre à jour la liste des commentaires associés
     header('Location: index.php');
 }
 
+function ajouterPersonnage($ajoutPerso) {
+    // AJouter l'événement à l'aide du modèle
+    ajouterPlayer($ajoutPerso);
+    //Recharger la page pour mettre à jour la liste des commentaires associés
+    header('Location: index.php');
+}
+
 // Ajoute un commentaire à un article
-function modifier($id) {
+function modifierEvenement($id) {
     // AJouter le commentaire à l'aide du modèle
     $event = getEvent($id);
 
     require 'Vue\vueModifier.php';
 }
 
-function supprimer($id) {
+function modifierPersonnage($ajoutPerso) {
+    $player = getPlayer($id);
+
+    require 'Vue\vueModifier.php';
+}
+
+function supprimerEvenement($id) {
     $event = getEvent($id);
+
+    require 'Vue\vueConfirmation.php';
+}
+
+function supprimerPersonnage($id) {
+    $player = getPlayer($id);
 
     require 'Vue\vueConfirmation.php';
 }

@@ -2,17 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Shrek 2 the Movie the Game the TP</title>
+        <title><?php echo $title; ?></title>
     </head>
     <style>
         form
         {
             text-align:center;
         }
+        th, tr, td
+        {
+            text-align:left;
+        }
     </style>
     <body>
         <a href="index.php"><h1>Shrek 2 the Movie the Game the TP</h1></a>
         <?= $contenu ?>
-        <br /><a href=".\apropos.html">~~À propos~~</a>
+        <br /><a href=".\apropos.html"><h3>~~À propos~~</h3></a>
     </body>
 </html>

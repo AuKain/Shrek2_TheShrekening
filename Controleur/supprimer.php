@@ -3,8 +3,10 @@
 require '..\Modele\modele.php';
 
 try {
+
     if (isset($_POST['id'])) {
-        // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
+
+        // ajouter un événement// intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
         $id = intval($_POST['id']);
         if ($id != 0) {
             
@@ -13,9 +15,10 @@ try {
             $req->execute(array($_POST['id']));
 
         } else
-            throw new Exception("Identifiant d'article incorrect");
+            throw new Exception("Identifiant d'événement incorrect");
+
     } else
-        throw new Exception("Aucun identifiant d'article");
+        throw new Exception("Aucun identifiant d'événement");
 } catch (Exception $e) {
     $msgErreur = $e->getMessage();
     require '..\Vue\vueErreur.php';
