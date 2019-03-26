@@ -25,6 +25,42 @@ function getEvents() {
     return $events;
 }
 
+// Renvoie les informations sur un player
+function getPlayer($idPlayer) {
+    $bdd = getBdd();
+    $player = $bdd->prepare('SELECT * from Players where player_id = ?');
+    $event->execute(array($idPlayer));
+    if ($event->rowCount() == 1)
+        return $event->fetch();  // Accès à la première ligne de résultat
+    else
+        throw new Exception("Aucun article ne correspond à l'identifiant '$idPlayer'");
+}
+
+// Renvoie la liste de tous les players
+function getPlayers() {
+    $bdd = getBdd();
+    $players = $bdd->query('SELECT * from Players order by player_id');
+    return $players;
+}
+
+// Renvoie les informations sur une place
+function getPlace($idPlace) {
+    $bdd = getBdd();
+    $place = $bdd->prepare('SELECT * from Place where place_id = ?');
+    $event->execute(array($idPlace));
+    if ($event->rowCount() == 1)
+        return $event->fetch();  // Accès à la première ligne de résultat
+    else
+        throw new Exception("Aucun article ne correspond à l'identifiant '$idPlace'");
+}
+
+// Renvoie la liste de tous les places
+function getPlaces() {
+    $bdd = getBdd();
+    $places = $bdd->query('SELECT * from Places order by place_id');
+    return $places;
+}
+
 // Ajoute un événement associés à un article
 function ajouterEvent($ajout) {
     $bdd = getBdd();

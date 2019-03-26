@@ -1,24 +1,35 @@
 <?php ob_start(); ?>
 <?php $title = 'Accueil Shrek 2' ?>
+
 <form action="index.php?action=envoyer&id=" . $events['id']" method="post">
     <h2>Ajouter un événement au film Shrek 2!</h2>
     <p>
         <label for="event">Événement</label> : <input type="text" name="event" id="event" /><br />
         <label for="place">Endroit</label> : 
             <select id="place" name="place" >
-                <option value="1">Marais</option>
-                <option value="2">Château</option>
-                <option value="3">Forêt</option>
-                <option value="4">Far Far Away</option>
+            <?php
+                $reponsePlaces = getPlaces();
+
+                while ($places = $reponsePlaces->fetch())
+                {
+                    echo '<option value="' . htmlspecialchars($places['place_id']) . '">' . 
+                    htmlspecialchars($places['place_name']) . '</option>';
+                }
+                $reponsePlaces->closeCursor();
+            ?>
             </select><br />
         <label for="player">Personnage</label> : 
             <select id="player" name="player" >
-                <option value="1">Fiona</option>
-                <option value="2">Shrek</option>
-                <option value="3">Donkey</option>
-                <option value="4">Puss in boots</option>
-                <option value="5">Prince Charming</option>
-                <option value="6">Dragon</option>
+            <?php 
+                $reponsePlayers = getPlayers();
+
+                while ($players = $reponsePlayers->fetch())
+                {
+                    echo '<option value="' . htmlspecialchars($players['player_id']) . '" >' . 
+                    htmlspecialchars($players['name']) . '</option>';
+                }
+                $reponsePlayers->closeCursor();
+            ?>
             </select><br />
         <label for="description">Description</label> : <textarea type="text" name="description" id="description" >Description de la scène</textarea><br />
         <label for="other_info">Autres détails</label> : <textarea type="text" name="other_info" id="other_info" >Autres détails ici</textarea><br />
