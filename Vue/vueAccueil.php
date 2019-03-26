@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
-<form action="event_envoyer.php" method="post">
+<?php $title = 'Accueil Shrek 2' ?>
+<form action="index.php?action=envoyer&id=" . $events['id']" method="post">
     <h2>Ajouter un événement au film Shrek 2!</h2>
     <p>
         <label for="event">Événement</label> : <input type="text" name="event" id="event" /><br />
@@ -33,14 +34,13 @@
     echo '<table><tr><th></th><th></th><th>Event name</th><th>Endroit</th><th>Personnage</th><th>Description</th><th>Autres détails</th></tr>';
     while ($donnees = $reponse->fetch())
     {
-        echo '<tr><td><a href="event_modifier.php?id=' . $donnees['id'] . '">[modifier]</a></td><td><a href="event_confirm.php?id=' . 
+        echo '<tr><td><a href="index.php?action=modifier&id=' . $donnees['id'] . '">[modifier]</a></td><td><a href="index.php?action=supprimer&id=' . 
             $donnees['id'] . '">[supprimer]</a></td><td>' .
             htmlspecialchars($donnees['event_name']) . '</td><td>' . 
             htmlspecialchars($donnees['place_name']) . '</td><td>' . 
             htmlspecialchars($donnees['player_name']) . '</td><td>' . 
             htmlspecialchars($donnees['description']) . '</td><td>' . 
             htmlspecialchars($donnees['other_details']) . '</td></tr>';
-            
     }
 
     echo '</table>';
