@@ -29,9 +29,9 @@ function getEvents() {
 function getPlayer($idPlayer) {
     $bdd = getBdd();
     $player = $bdd->prepare('SELECT * from Players where player_id = ?');
-    $event->execute(array($idPlayer));
-    if ($event->rowCount() == 1)
-        return $event->fetch();  // Accès à la première ligne de résultat
+    $player->execute(array($idPlayer));
+    if ($player->rowCount() == 1)
+        return $player->fetch();  // Accès à la première ligne de résultat
     else
         throw new Exception("Aucun article ne correspond à l'identifiant '$idPlayer'");
 }
@@ -61,7 +61,11 @@ function getPlaces() {
     return $places;
 }
 
+<<<<<<< HEAD
 // Ajoute un événement associés à un article
+=======
+// Ajoute un événement
+>>>>>>> dev
 function ajouterEvent($ajout) {
     $bdd = getBdd();
     $ajouts = $bdd->prepare('INSERT INTO Events (event_name, place_id, player_id, event_description, other_event_details) VALUES(?, ?, ?, ?, ?)');
@@ -71,7 +75,43 @@ function ajouterEvent($ajout) {
 
 // Modifie un événement
 function modifierEvent($id) {
-    $bdd = getBdd();
-
+    try {
+        if (isset($_POST['id'])) {
+            // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
+            $id = intval($_POST['id']);
+            if ($id != 0) {
+                
+                $bdd = getBdd();
+                $req = $bdd->prepare('UPDATE Events SET event_name = ?, place_id = ?, player_id = ?, event_description = ?, other_event_details = ? WHERE event_id = ?');
+                $req->execute(array($_POST['event'], $_POST['place'], $_POST['player'], $_POST['description'], $_POST['other_info'], $_POST['id']));
     
+            } else
+                throw new Exception("Identifiant d'événement incorrect");
+        } else
+            throw new Exception("Aucun identifiant d'événement");
+    } catch (Exception $e) {
+        $msgErreur = $e->getMessage();
+        require '..\Vue\vueErreur.php';
+    }
+}
+
+// Ajoute un personnage
+function ajouterPlayer($ajout) {
+    $bdd = getBdd();
+    $ajouts = $bdd->prepare('INSERT INTO Players (name, courriel, gender, number_of_legs, other_player_details) VALUES(?, ?, ?, ?, ?)');
+    $ajouts->execute(array($ajout['name'], $ajout['courriel'], $ajout['gender'], $ajout['number_of_legs'], $ajout['other_player_details']));
+    return $ajouts;
+}
+
+// Modifie un personnage
+function modifierPlayer($id) {
+
+}
+
+function supprimerEvent($id) {
+
+}
+
+function supprimerPlayer($id) {
+
 }

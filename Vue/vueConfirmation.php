@@ -1,25 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Shrek 2: The Suppression</title>
-    </head>
-    <body>
-        <?php 
-            $donnees = getEvent($_GET['id']); 
-        ?>
+<?php 
+    ob_start();
+    $title = 'Suppression Shrek 2';
 
-        <p>
-            Êtes-vous certain de vouloir supprimer l'événement : 
-            <strong><?php echo $donnees['event_name']; ?></strong> ?
-        </p>
+    if ($table == 'Event') {
+        $donnees = getEvent($_GET['id']);
+    } else if ($table == 'Player') {
+        $donnees = getPlayer($_GET['id']);
+    }
+    
+?>
 
-        <form action="Controleur\supprimer.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
-            <input type="submit" value="Confirmer la suppression" />
-        </form>
-        <a href="index.php"><strong>Annuler la suppression</strong></a>
-        <br/ ><br/ >
+<p>
+    Êtes-vous certain de vouloir supprimer l'événement : 
+    <strong><?php if($table == 'Event') echo $donnees['event_name'] ?><?php if ($table == 'Player') echo $donnees['name'] ?> </strong> ?
+</p>
 
-    </body>
-</html>
+<form action="Controleur\supprimer.php" method="post">
+    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
+    <input type="submit" value="Confirmer la suppression" /><br />
+    <input type="hidden" name="table" value="<?= $table ?>" />
+    <a href="index.php"><strong>Annuler la suppression</strong></a>
+</form>
+<br/ ><br/ >
+
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>

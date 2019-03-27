@@ -3,19 +3,33 @@
 require '..\Modele\modele.php';
 
 try {
+
     if (isset($_POST['id'])) {
-        // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
+
+        // ajouter un événement// intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
         $id = intval($_POST['id']);
         if ($id != 0) {
             
-            $bdd = getBdd();
-            $req = $bdd->prepare('DELETE from Events where event_id=?');
-            $req->execute(array($_POST['id']));
+            if ($_POST['table'] == 'Event') {
+
+                $bdd = getBdd();
+                $req = $bdd->prepare('DELETE from Events where event_id=?');
+                $req->execute(array($_POST['id']));
+                
+            } else if ($_POST['table'] == 'Player') {
+
+                $bdd = getBdd();
+                $req = $bdd->prepare('DELETE from Players where player_id=?');
+                $req->execute(array($_POST['id']));
+
+            } else
+                throw new Exception("Table non valide");
 
         } else
-            throw new Exception("Identifiant d'article incorrect");
+            throw new Exception("Identifiant d'événement incorrect");
+
     } else
-        throw new Exception("Aucun identifiant d'article");
+        throw new Exception("Aucun identifiant d'événement");
 } catch (Exception $e) {
     $msgErreur = $e->getMessage();
     require '..\Vue\vueErreur.php';
