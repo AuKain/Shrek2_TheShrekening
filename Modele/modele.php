@@ -99,7 +99,7 @@ function ajouterPlayer($ajout) {
     return $ajouts;
 }
 
-// Recherche les types répondant à l'autocomplete
+// Recherche les persos répondant à l'autocomplete
 function searchPerso($term) {
     $conn = getBdd();
     $stmt = $conn->prepare('SELECT perso_nom FROM Personnages WHERE perso_nom LIKE :term');
