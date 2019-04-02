@@ -92,7 +92,7 @@
 <form action="index.php?action=envoyerPlayer&id=" . $playersDB['id']" method="post">
     <h2>Ajouter un personnage au film Shrek 2!</h2>
     <p>
-        <label for="name">Personnage</label> : <input type="text" name="name" id="name" /><br />
+        <label for="name">Personnage</label> : <input class="ui-autocomplete-input" type="text" name="name" id="auto" /> <br />
         <label for="courriel">Adresse courriel</label> : <input type="text" name="courriel" id="courriel" value="exemple@domaine.com" /><br />
         <label for="gender">Genre</label> : 
             <select id="gender" name="gender" >

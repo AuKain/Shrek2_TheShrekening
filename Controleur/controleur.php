@@ -45,6 +45,11 @@ function supprimerPersonnage($id) {
     require 'Vue\vueConfirmation.php';
 }
 
+// recherche et retourne les personnage pour l'autocomplete
+function quelsPersos($term) {
+    echo searchPerso($term);
+}
+
 // Affiche une erreur
 function erreur($msgErreur) {
     require 'Vue\vueErreur.php';

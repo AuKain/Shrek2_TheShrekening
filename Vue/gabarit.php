@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title><?php echo $titre; ?></title>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
     </head>
     <style>
         form
@@ -19,7 +20,7 @@
         <?= $contenu ?>
         <br /><a href=".\apropos.html"><h3>~~À propos~~</h3></a>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="Contenu/js/autoComp.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="Contenu/autoComp.js"></script>
     </body>
 </html>

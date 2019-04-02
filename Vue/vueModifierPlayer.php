@@ -10,7 +10,7 @@
 <form action="Controleur\modifier.php" method="post">
     <h2>Modifier les personnages du film!</h2>
     <p>
-        <label for="name">Personnage</label> : <input type="text" name="name" id="name" value="<?= htmlspecialchars($donnees['name']); ?>" /><br />
+        <label for="name">Personnage</label> : <input type="text" name="name" id="auto" value="<?= htmlspecialchars($donnees['name']); ?>" /> <br />
         <label for="courriel">Adresse courriel</label> : <input type="text" name="courriel" id="courriel" value="<?= htmlspecialchars($donnees['courriel']); ?>" /><br />
         <label for="gender">Genre</label> : 
             <select id="gender" name="gender" >
