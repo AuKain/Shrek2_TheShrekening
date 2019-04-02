@@ -7,7 +7,7 @@
 ?>
 
 
-<form action="Controleur\modifier.php" method="post">
+<form action="index.php?action=modifier" method="post">
     <h2>Modifier les personnages du film!</h2>
     <p>
         <label for="name">Personnage</label> : <input type="text" name="name" id="auto" value="<?= htmlspecialchars($donnees['name']); ?>" /> <br />

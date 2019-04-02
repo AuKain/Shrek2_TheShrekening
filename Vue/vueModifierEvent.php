@@ -7,7 +7,7 @@
 ?>
 
 
-<form action="Controleur\modifier.php" method="post">
+<form action="index.php?action=modifier" method="post">
     <h2>Modifier les événements du film!</h2>
     <p>
         <label for="event">Événement</label> : <input type="text" name="event" id="event" value="<?php echo htmlspecialchars($donnees['event_name']); ?>" /><br />

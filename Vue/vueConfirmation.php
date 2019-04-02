@@ -15,7 +15,7 @@
     <strong><?php if($table == 'Event') echo $donnees['event_name'] ?><?php if ($table == 'Player') echo $donnees['name'] ?> </strong> ?
 </p>
 
-<form action="Controleur\supprimer.php" method="post">
+<form action="index.php?action=supprimer" method="post">
     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
     <input type="submit" value="Confirmer la suppression" /><br />
     <input type="hidden" name="table" value="<?= $table ?>" />

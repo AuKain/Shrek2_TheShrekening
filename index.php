@@ -87,6 +87,16 @@ try {
             } else
                 throw new Exception("Aucun identifiant de personnage");
         
+        } else if ($_GET['action'] == 'modifier') {
+
+            $post = $_POST;
+            require 'Controleur/modifier.php';
+
+        } else if ($_GET['action'] == 'supprimer') {
+
+            $post = $_POST;
+            require 'Controleur/supprimer.php';
+
         } else if ($_GET['action'] == 'quelsPersos') {
             quelsPersos($_GET['term']);
 
