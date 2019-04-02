@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2019 at 11:54 PM
+-- Generation Time: Apr 02, 2019 at 04:53 AM
 -- Server version: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Events` (
   `player_id` int(11) DEFAULT NULL,
   `event_description` varchar(255) DEFAULT NULL,
   `other_event_details` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Events`
@@ -44,6 +44,35 @@ INSERT INTO `Events` (`event_id`, `event_name`, `place_id`, `player_id`, `event_
 (2, 'Rencontre Puss in Boots', 3, 4, 'Puss in Boots dans la forêt', 'Zoro'),
 (3, 'Rencontre Roi et Reine', 2, 1, 'Shrek rencontre beau-parents', 'Dans le château de Far Far Away'),
 (4, 'Bataille contre FairyGodmother', 4, 5, 'Shrek Vs. FairyGodmother', 'Prince charming essaie d''embrasser Fiona');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Personnages`
+--
+
+CREATE TABLE IF NOT EXISTS `Personnages` (
+  `perso_id` int(11) NOT NULL,
+  `perso_nom` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Personnages`
+--
+
+INSERT INTO `Personnages` (`perso_id`, `perso_nom`) VALUES
+(1, 'Fiona'),
+(2, 'Shrek'),
+(3, 'Smash Mouth'),
+(4, 'Pinocchio'),
+(5, 'Donkey'),
+(6, 'Fairy Godmother'),
+(7, 'Puss in boots'),
+(8, 'Dragon'),
+(9, 'Prince Charming'),
+(10, 'Cookie'),
+(11, 'Pig'),
+(12, 'Villager');
 
 -- --------------------------------------------------------
 
@@ -82,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `Players` (
   `gender` char(1) DEFAULT NULL,
   `number_of_legs` int(11) NOT NULL,
   `other_player_details` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Players`
@@ -110,6 +139,12 @@ ALTER TABLE `Events`
   ADD KEY `FK_PLAYER_ID` (`player_id`);
 
 --
+-- Indexes for table `Personnages`
+--
+ALTER TABLE `Personnages`
+  ADD PRIMARY KEY (`perso_id`);
+
+--
 -- Indexes for table `Places`
 --
 ALTER TABLE `Places`
@@ -129,7 +164,12 @@ ALTER TABLE `Players`
 -- AUTO_INCREMENT for table `Events`
 --
 ALTER TABLE `Events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `Personnages`
+--
+ALTER TABLE `Personnages`
+  MODIFY `perso_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `Places`
 --
@@ -139,7 +179,7 @@ ALTER TABLE `Places`
 -- AUTO_INCREMENT for table `Players`
 --
 ALTER TABLE `Players`
-  MODIFY `player_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `player_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --

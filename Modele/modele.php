@@ -99,6 +99,16 @@ function ajouterPlayer($ajout) {
     return $ajouts;
 }
 
-function verifierNom($nom) {
-    
+// Recherche les persos répondant à l'autocomplete
+function searchPerso($term) {
+    $conn = getBdd();
+    $stmt = $conn->prepare('SELECT perso_nom FROM Personnages WHERE perso_nom LIKE :term');
+    $stmt->execute(array('term' => '%' . $term . '%'));
+
+    while ($row = $stmt->fetch()) {
+        $return_arr[] = $row['perso_nom'];
+    }
+
+    /* Toss back results as json encoded array. */
+    return json_encode($return_arr);
 }

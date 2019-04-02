@@ -35,7 +35,7 @@ try {
         throw new Exception("Aucun identifiant d'événement");
 } catch (Exception $e) {
     $msgErreur = $e->getMessage();
-    require '..\Vue\vueErreur.php';
+    require '..\Vue\vueErreur.php'; //TODO n'entre pas dans la vue, mais arrive bel et bien à cette ligne??
 }
 
 // Redirection du visiteur vers la page d'accueil
