@@ -1,6 +1,6 @@
 <?php
     ob_start();
-    $title = 'Modifier le script de Shrek 2';
+    $titre = 'Modifier le script de Shrek 2';
 
     // Affichage du message à modifer (toutes les données externes sont protégées par htmlspecialchars)
     $donnees = getEvent($_GET['id']);

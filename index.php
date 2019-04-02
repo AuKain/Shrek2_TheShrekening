@@ -45,7 +45,16 @@ try {
 
         } else if ($_GET['action'] == 'envoyerPlayer') {
 
-            ajouterPersonnage($_POST);
+            if ( filter_var($_POST['courriel'], FILTER_VALIDATE_EMAIL) !== false ) {
+                if (filter_var($_POST['number_of_legs'], FILTER_VALIDATE_INT) !== false && $_POST['number_of_legs'] >= 0 ) {
+                    ajouterPersonnage($_POST);
+                } else {
+                    throw new Exception("Le nombre de jambe doit être un nombre entier positif.");
+                }
+            } else {
+                throw new Exception("L'adresse courriel n'a pas le bon format. (exemple@domaine.com)");
+            }
+            
 
         } else if ($_GET['action'] == 'modifierPlayer') {
 
@@ -78,6 +87,9 @@ try {
             } else
                 throw new Exception("Aucun identifiant de personnage");
         
+        } else if ($_GET['action'] == 'quelsTypes') {
+            quelsTypes($_GET['term']);
+
         } else {
             // Fin des actions
             throw new Exception("Action non valide");

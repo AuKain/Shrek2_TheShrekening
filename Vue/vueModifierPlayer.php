@@ -1,6 +1,6 @@
 <?php
     ob_start();
-    $title = 'Modifier le script de Shrek 2';
+    $titre = 'Modifier le script de Shrek 2';
 
     // Affichage du message à modifer (toutes les données externes sont protégées par htmlspecialchars)
     $donnees = getPlayer($_GET['id']);
@@ -17,7 +17,7 @@
                 <option value="M" <?php if($donnees['gender'] == 'M') echo 'Selected' ?> >Homme</option>
                 <option value="F" <?php if($donnees['gender'] == 'F') echo 'Selected' ?> >Femme</option>
             </select><br />
-        <label for="number_of_legs">Nombre de jambes</label> : <input type="number" name="number_of_legs" id="number_of_legs" min="1" value="<?= htmlspecialchars($donnees['number_of_legs']); ?>" /><br />
+        <label for="number_of_legs">Nombre de jambes</label> : <input type="text" name="number_of_legs" id="number_of_legs" value="<?= htmlspecialchars($donnees['number_of_legs']); ?>" /><br />
         <label for="other_player_details">Autres détails</label> : <textarea type="text" name="other_player_details" id="other_player_details" ><?= htmlspecialchars($donnees['other_player_details']) ?></textarea><br />
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
         <input type="hidden" name="table" value="Player" />
