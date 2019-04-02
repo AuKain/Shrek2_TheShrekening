@@ -1,4 +1,3 @@
-
 <?php 
     ob_start();
     $title = 'Accueil Shrek 2';

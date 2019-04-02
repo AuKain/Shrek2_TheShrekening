@@ -61,11 +61,7 @@ function getPlaces() {
     return $places;
 }
 
-<<<<<<< HEAD
-// Ajoute un événement associés à un article
-=======
 // Ajoute un événement
->>>>>>> dev
 function ajouterEvent($ajout) {
     $bdd = getBdd();
     $ajouts = $bdd->prepare('INSERT INTO Events (event_name, place_id, player_id, event_description, other_event_details) VALUES(?, ?, ?, ?, ?)');

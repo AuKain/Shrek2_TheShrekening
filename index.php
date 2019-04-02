@@ -78,6 +78,9 @@ try {
             } else
                 throw new Exception("Aucun identifiant de personnage");
         
+        } else if ($_GET['action'] == 'quelsTypes') {
+            quelsTypes($_GET['term']);
+
         } else {
             // Fin des actions
             throw new Exception("Action non valide");
