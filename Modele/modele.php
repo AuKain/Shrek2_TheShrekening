@@ -99,15 +99,6 @@ function ajouterPlayer($ajout) {
     return $ajouts;
 }
 
-// Modifie un personnage
-function modifierPlayer($id) {
-
-}
-
-function supprimerEvent($id) {
-
-}
-
-function supprimerPlayer($id) {
-
+function verifierNom($nom) {
+    
 }

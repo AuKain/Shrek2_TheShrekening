@@ -1,6 +1,6 @@
 <?php 
     ob_start();
-    $title = 'Suppression Shrek 2';
+    $titre = 'Suppression Shrek 2';
 
     if ($table == 'Event') {
         $donnees = getEvent($_GET['id']);

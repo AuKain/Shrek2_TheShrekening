@@ -1,6 +1,6 @@
 <?php 
     ob_start();
-    $title = 'Accueil Shrek 2';
+    $titre = 'Accueil Shrek 2';
     $eventsDB = getEvents();
     $playersDB = getPlayers();
 ?>
@@ -99,7 +99,7 @@
                 <option value="M">Homme</option>
                 <option value="F">Femme</option>
             </select><br />
-        <label for="number_of_legs">Nombre de jambes</label> : <input type="number" name="number_of_legs" id="number_of_legs" min="1" value="2" /><br />
+        <label for="number_of_legs">Nombre de jambes</label> : <input type="text" name="number_of_legs" id="number_of_legs" value="2" /><br />
         <label for="other_player_details">Autres détails</label> : <textarea type="text" name="other_player_details" id="other_player_details" >Autres détails ici</textarea><br />
         <input type="hidden" name="table" value="Player" />
         <input type="submit" value="Envoyer" />

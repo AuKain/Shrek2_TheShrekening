@@ -16,10 +16,17 @@ try {
             
             } else if ($_POST['table'] == 'Player') {
 
-                $bdd = getBdd();
-                $req = $bdd->prepare('UPDATE Players SET name = ?, courriel = ?, gender = ?, number_of_legs = ?, other_player_details = ? WHERE player_id = ?');
-                $req->execute(array($_POST['name'], $_POST['courriel'], $_POST['gender'], $_POST['number_of_legs'], $_POST['other_player_details'], $_POST['id']));
+                if ( filter_var($_POST['courriel'], FILTER_VALIDATE_EMAIL) !== false ) {
+                    if (filter_var($_POST['number_of_legs'], FILTER_VALIDATE_INT) !== false && $_POST['number_of_legs'] >= 0 ) {
+                        
+                        $bdd = getBdd();
+                        $req = $bdd->prepare('UPDATE Players SET name = ?, courriel = ?, gender = ?, number_of_legs = ?, other_player_details = ? WHERE player_id = ?');
+                        $req->execute(array($_POST['name'], $_POST['courriel'], $_POST['gender'], $_POST['number_of_legs'], $_POST['other_player_details'], $_POST['id']));
 
+                    } else 
+                        throw new Exception("Le nombre de jambe doit être un nombre entier positif.");
+                } else 
+                    throw new Exception("L'adresse courriel n'a pas le bon format. (exemple@domaine.com)");
             } else 
                 throw new Exception("Table non valide");
         } else
