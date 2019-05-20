@@ -9,7 +9,7 @@ if (isset($post['id'])) {
         if ($post['table'] == 'Event') {
 
             $bdd = getBdd();
-            $req = $bdd->prepare('DELETE from Events where event_id=?');
+            $req = $bdd->prepare('UPDATE Events set deleted = 1 where event_id=?');
             $req->execute(array($post['id']));
             
         } else if ($post['table'] == 'Player') {
