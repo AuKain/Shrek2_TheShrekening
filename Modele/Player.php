@@ -23,12 +23,12 @@
             return $players;
         }
 
-        public function modifierPlayer($id) {//TODO A FAIRE TANTOT
-            if (isset($_POST['id'])) {
+        public function modifierPlayer($player) {//TODO A FAIRE TANTOT
+            if (isset($player['id'])) {
                 if ($id != 0) {
                     
                     $sql = 'UPDATE Players SET name = ?, courriel = ?, gender = ?, number_of_legs = ?, other_player_details = ? WHERE player_id = ?';
-                    $req = $this->executerRequete($sql [$post['name'], $post['courriel'], $post['gender'], $post['number_of_legs'], $post['other_player_details'], $id]);
+                    $req = $this->executerRequete($sql, [$player['name'], $player['courriel'], $player['gender'], $player['number_of_legs'], $player['other_player_details'], $player['id']]);
                     return $req;
                     
                 } else

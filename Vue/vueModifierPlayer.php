@@ -1,6 +1,5 @@
 <?php
-    ob_start();
-    $titre = 'Modifier le script de Shrek 2';
+    $this->titre = 'Modifier le script de Shrek 2';
 
     // Affichage du message à modifer (toutes les données externes sont protégées par htmlspecialchars)
     $donnees = getPlayer($_GET['id']);
@@ -25,6 +24,3 @@
         <a href="index.php">Annuler les modifications</a>
     </p>
 </form>
-
-<?php $contenu = ob_get_clean(); ?>
-<?php require 'gabarit.php'; ?>

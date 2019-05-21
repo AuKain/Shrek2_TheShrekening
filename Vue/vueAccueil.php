@@ -1,11 +1,8 @@
 <?php 
-    ob_start();
-    $titre = 'Accueil Shrek 2';
-    $eventsDB = getEvents();
+    $this->titre = 'Accueil Shrek 2';
+    /*$eventsDB = getEvents();
     $playersDB = getPlayers();
-?>
 
-<?php
     // Connexion à la base de données
     $reponse = getEvents();
     
@@ -25,13 +22,13 @@
 
     echo '</table>';
 
-    $reponse->closeCursor();
+    $reponse->closeCursor();*/
 
 ?>
 <br />
 
 <?php 
-    $reponsePlayers = getPlayers();
+    /*$reponsePlayers = getPlayers();
 
     echo '<h2>Les personnnages du film Shrek 2</h2>';
 
@@ -49,7 +46,7 @@
 
     echo '</table>';
 
-    $reponse->closeCursor();
+    $reponse->closeCursor();*/
 ?>
 
 <form action="index.php?action=envoyerEvent&id=" . $eventsDB['id']" method="post">
@@ -59,27 +56,27 @@
         <label for="place">Endroit</label> : 
             <select id="place" name="place" >
             <?php
-                $reponsePlaces = getPlaces();
+                /*$reponsePlaces = getPlaces();
 
                 while ($places = $reponsePlaces->fetch())
                 {
                     echo '<option value="' . htmlspecialchars($places['place_id']) . '">' . 
                     htmlspecialchars($places['place_name']) . '</option>';
                 }
-                $reponsePlaces->closeCursor();
+                $reponsePlaces->closeCursor();*/
             ?>
             </select><br />
         <label for="player">Personnage</label> : 
             <select id="player" name="player" >
             <?php 
-                $reponsePlayers = getPlayers();
+                /*$reponsePlayers = getPlayers();
 
                 while ($players = $reponsePlayers->fetch())
                 {
                     echo '<option value="' . htmlspecialchars($players['player_id']) . '" >' . 
                     htmlspecialchars($players['name']) . '</option>';
                 }
-                $reponsePlayers->closeCursor();
+                $reponsePlayers->closeCursor();*/
             ?>
             </select><br />
         <label for="description">Description</label> : <textarea type="text" name="description" id="description" >Description de la scène</textarea><br />
@@ -105,6 +102,3 @@
         <input type="submit" value="Envoyer" />
     </p>
 </form>
-
-<?php $contenu = ob_get_clean(); ?>
-<?php require 'gabarit.php'; ?>

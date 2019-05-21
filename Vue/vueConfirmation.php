@@ -1,6 +1,5 @@
 <?php 
-    ob_start();
-    $titre = 'Suppression Shrek 2';
+    $this->titre = 'Suppression Shrek 2';
 
     if ($table == 'Event') {
         $donnees = getEvent($_GET['id']);
@@ -22,6 +21,3 @@
     <a href="index.php"><strong>Annuler la suppression</strong></a>
 </form>
 <br/ ><br/ >
-
-<?php $contenu = ob_get_clean(); ?>
-<?php require 'gabarit.php'; ?>

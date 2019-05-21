@@ -2,7 +2,7 @@
 
     require_once 'Framework/Modele.php';
 
-    class Player extends Modele {
+    class Personnage extends Modele {
 
         // Recherche les persos répondant à l'autocomplete
         public function searchPerso($term) {

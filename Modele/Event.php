@@ -30,12 +30,12 @@
         }
 
         // Modifie un événement
-        public function modifierEvent($id) {//post marche pas?
-            if (isset($_POST['id'])) {
+        public function modifierEvent($event) {//post marche pas?
+            if (isset($event['id'])) {
                 if ($id != 0) {
                     
                     $sql = 'UPDATE Events SET event_name = ?, place_id = ?, player_id = ?, event_description = ?, other_event_details = ? WHERE event_id = ?';
-                    $req = $this->executerRequete([array($sql, [$_POST['event'], $_POST['place'], $_POST['player'], $_POST['description'], $_POST['other_info'], $id]);
+                    $req = $this->executerRequete($sql, [$event['event'], $event['place'], $event['player'], $event['description'], $event['other_info'], $event['id']]);
                     return $req;
 
                 } else
