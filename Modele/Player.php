@@ -6,7 +6,7 @@
 
         // Renvoie les informations sur un player
         public function getPlayer($idPlayer) {
-            $sql = 'SELECT * from Players where player_id = ?';
+            $sql = 'SELECT player_id as "id", name, courriel, gender, number_of_legs, other_player_details from Players where player_id = ?';
             $player = $this->executerRequete($sql, [$idPlayer]);
 
             if ($player->rowCount() == 1)
@@ -18,14 +18,14 @@
 
         // Renvoie la liste de tous les players
         public function getPlayers() {
-            $sql = 'SELECT * from Players order by player_id';
+            $sql = 'SELECT player_id as "id", name, courriel, gender, number_of_legs, other_player_details from Players order by player_id';
             $players = $this->executerRequete($sql);
             return $players;
         }
 
-        public function modifierPlayer($player) {//TODO A FAIRE TANTOT
+        public function modifierPlayer($player) {
             if (isset($player['id'])) {
-                if ($id != 0) {
+                if ($player['id'] != 0) {
                     
                     $sql = 'UPDATE Players SET name = ?, courriel = ?, gender = ?, number_of_legs = ?, other_player_details = ? WHERE player_id = ?';
                     $req = $this->executerRequete($sql, [$player['name'], $player['courriel'], $player['gender'], $player['number_of_legs'], $player['other_player_details'], $player['id']]);
@@ -46,7 +46,7 @@
 
         public function supprimerPlayer($id) {
             $sql = 'DELETE from Players where player_id=?';
-            $req = executerRequete($sql, [$id]);
+            $req = $this->executerRequete($sql, [$id]);
             return $req;
         }
     }

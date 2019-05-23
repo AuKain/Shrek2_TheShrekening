@@ -1,23 +1,15 @@
 <?php 
     $this->titre = 'Suppression Shrek 2';
-
-    if ($table == 'Event') {
-        $donnees = getEvent($_GET['id']);
-    } else if ($table == 'Player') {
-        $donnees = getPlayer($_GET['id']);
-    }
-    
 ?>
 
 <p>
-    Êtes-vous certain de vouloir supprimer l'événement : 
-    <strong><?php if($table == 'Event') echo $donnees['event_name'] ?><?php if ($table == 'Player') echo $donnees['name'] ?> </strong> ?
+    Êtes-vous certain de vouloir supprimer <?= ($type == 'Player')? "le personnage" : "l'événement"?> : 
+    <strong><?php echo $donnee['name'];?> </strong> ?
 </p>
 
-<form action="index.php?action=supprimer" method="post">
-    <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
-    <input type="submit" value="Confirmer la suppression" /><br />
-    <input type="hidden" name="table" value="<?= $table ?>" />
+<form action="index.php?action=supprimer<?=$type?>" method="post">
+    <input type="hidden" name="id" value="<?=$donnee['id']?>" />
+    <input type="submit" value="Confirmer la suppression" /><br/>
     <a href="index.php"><strong>Annuler la suppression</strong></a>
 </form>
-<br/ ><br/ >
+<br/><br/>

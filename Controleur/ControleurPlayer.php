@@ -7,14 +7,15 @@ class ControleurPlayer {
 
     private $player;
 
-    public function __contruct() {
+    public function __construct() {
         $this->player = new Player();
     }
 
     public function ajouter($player) {
         if ( filter_var($player['courriel'], FILTER_VALIDATE_EMAIL) !== false ) {
             if (filter_var($player['number_of_legs'], FILTER_VALIDATE_INT) !== false && $player['number_of_legs'] >= 0 ) {
-                //ajouter a la db
+                
+                $this->player->setPlayer($player);
             } else {
                 throw new Exception("Le nombre de jambe doit être un nombre entier positif.");
             }
@@ -24,15 +25,23 @@ class ControleurPlayer {
     }
 
     public function modifier($id) {
-        
+        $player = $this->player->getPlayer($id);
+        $vue = new Vue("ModifierPlayer");
+        $vue->generer(['player' => $player]);
+    }
+
+    public function mettreAJour($player) {
+        $this->player->modifierPlayer($player);
     }
 
     public function confirmer($id) {
-
+        $type = 'Player';
+        $vue = new Vue("Confirmation");
+        $vue->generer(['donnee' => $this->player->getPlayer($id), 'type' => $type]);
     }
 
     public function supprimer($id) {
-
+        $this->player->supprimerPlayer($id);
     }
 }
 ?>

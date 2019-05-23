@@ -31,7 +31,7 @@
         private function getBdd() {
             if ($this->bdd == null) {
                 // Création de la connexion
-                $bdd = new PDO('mysql:host=localhost;dbname=shrek2;charset=utf8', 'root', 'mysql', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                $this->bdd = new PDO('mysql:host=localhost;dbname=shrek2;charset=utf8', 'root', 'mysql', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             }
             return $this->bdd;
         }

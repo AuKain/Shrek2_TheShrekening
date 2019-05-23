@@ -28,6 +28,7 @@
                     if ($_GET['action'] == 'envoyerEvent') {
             
                         $this->ctrlEvent->ajouter($_POST);
+                        header("location:index.php");
             
                         // modifier un événement
                     } else if ($_GET['action'] == 'modifierEvent') {
@@ -39,12 +40,31 @@
                             } else
                                 throw new Exception("Identifiant d'événement incorrect");
 
+                    } else if ($_GET['action'] == 'majEvent') {
+
+                        if ($_POST['id'] != 0) {
+                                $this->ctrlEvent->mettreAJour($_POST);
+                                header("location:index.php");
+
+                            } else
+                                throw new Exception("Identifiant d'événement incorrect");
+
                         // supprimer un événement
-                    } else if ($_GET['action'] == 'supprimerEvent') {
+                    } else if ($_GET['action'] == 'confirmerEvent') {
             
                         $id = intval($this->getParametre($_GET, 'id' ));
                         if ($id != 0) {
+                            $this->ctrlEvent->confirmer($id);
+
+                        } else
+                            throw new Exception("Identifiant d'événement incorrect");
+                    
+                    } else if ($_GET['action'] == 'supprimerEvent') {
+        
+                        $id = intval($this->getParametre($_POST, 'id' ));
+                        if ($id != 0) {
                             $this->ctrlEvent->supprimer($id);
+                            header("location:index.php");
 
                         } else
                             throw new Exception("Identifiant d'événement incorrect");
@@ -52,6 +72,7 @@
                     } else if ($_GET['action'] == 'envoyerPlayer') {
             
                         $this->ctrlPlayer->ajouter($_POST);
+                        header("location:index.php");
                         
                     } else if ($_GET['action'] == 'modifierPlayer') {
             
@@ -60,17 +81,36 @@
                                 $this->ctrlPlayer->modifier($id);
 
                             } else
-                                throw new Exception("Identifiant d'événement incorrect");
+                                throw new Exception("Identifiant d'acteur incorrect");
+
+                    } else if ($_GET['action'] == 'majPlayer') {
+    
+                        if ($_POST['id'] != 0) {
+                                $this->ctrlPlayer->mettreAJour($_POST);
+                                header("location:index.php");
+
+                            } else
+                                throw new Exception("Identifiant d'acteur incorrect");
             
-                    } else if ($_GET['action'] == 'supprimerPlayer') {
+                    } else if ($_GET['action'] == 'confirmerPlayer') {
             
                         $id = intval($this->getParametre($_GET, 'id' ));
                         if ($id != 0) {
-                            $this->ctrlPlayer->supprimer($id);
+                            $this->ctrlPlayer->confirmer($id);
 
                         } else
-                            throw new Exception("Identifiant d'événement incorrect");
+                            throw new Exception("Identifiant d'acteur incorrect");
                     
+                    } else if ($_GET['action'] == 'supprimerPlayer') {
+    
+                        $id = intval($this->getParametre($_POST, 'id' ));
+                        if ($id != 0) {
+                            $this->ctrlPlayer->supprimer($id);
+                            header("location:index.php");
+
+                        } else
+                            throw new Exception("Identifiant d'acteur incorrect");
+
                     } else if ($_GET['action'] == 'quelsPersos') {
                         $this->ctrlPersonnage->quelsPersos($_GET['term']);
             
@@ -79,8 +119,7 @@
                         throw new Exception("Action non valide");
                     }
                 } else {
-                    $vue = new Vue("Accueil"); // action par défaut
-                    $vue->generer();
+                    $this->ctrlEvent->events();
                 }
             } catch (Exception $e) {
                 $this->erreur($e->getMessage());
