@@ -111,6 +111,11 @@
                         } else
                             throw new Exception("Identifiant d'acteur incorrect");
 
+                    } else if ($_GET['action'] == 'aPropos') {
+                    
+                        $vue = new Vue("Propos");
+                        $vue->generer();
+
                     } else if ($_GET['action'] == 'quelsPersos') {
                         $this->ctrlPersonnage->quelsPersos($_GET['term']);
             

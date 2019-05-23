@@ -1,5 +1,5 @@
 <?php
-    $this->titre = 'Modifier le script de Shrek 2';
+    $this->titre = 'Modifier les personnages de Shrek 2';
 ?>
 
 <form action="index.php?action=majPlayer" method="post">
