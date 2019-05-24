@@ -1,9 +1,11 @@
 <?php 
 
+    require_once 'Framework/Configuration.php';
+
     abstract class Modele {
 
         /** Objet PDO d'accès à la BD */
-        private $bdd;
+        private static $bdd;
 
         /**
          * Exécute une requête SQL éventuellement paramétrée
@@ -29,11 +31,17 @@
          * @return PDO L'objet PDO de connexion à la BDD
          */
         private function getBdd() {
-            if ($this->bdd == null) {
+            if (self::$bdd === null) {
+
+                // Récupération des paramètres de configuration BD
+                $dsn = Configuration::get("dsn");
+                $login = Configuration::get("login");
+                $mdp = Configuration::get("mdp");
+
                 // Création de la connexion
-                $this->bdd = new PDO('mysql:host=localhost;dbname=shrek2;charset=utf8', 'root', 'mysql', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                self::$bdd = new PDO($dsn, $login, $mdp, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             }
-            return $this->bdd;
+            return self::$bdd;
         }
     }
 ?>

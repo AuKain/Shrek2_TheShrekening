@@ -2,7 +2,7 @@
     $this->titre = 'Modifier les personnages de Shrek 2';
 ?>
 
-<form action="index.php?action=majPlayer" method="post">
+<form action="index.php?controleur=Player&action=mettreAJour" method="post">
     <h2>Modifier les personnages du film!</h2>
     <p>
         <label for="name">Personnage</label> : <input type="text" name="name" id="auto" value="<?= htmlspecialchars($player['name']); ?>" /><br/>

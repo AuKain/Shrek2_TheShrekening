@@ -2,7 +2,7 @@
     $this->titre = 'Modifier le script de Shrek 2';
 ?>
 
-<form action="index.php?action=majEvent" method="post">
+<form action="index.php?action=mettreAJour" method="post">
     <h2>Modifier les événements du film!</h2>
     <p>
         <label for="event">Événement</label> : <input type="text" name="event" id="event" value="<?php echo htmlspecialchars($event['name']); ?>" /><br/>

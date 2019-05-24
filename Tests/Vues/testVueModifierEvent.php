@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Vue/Vue.php';
+require_once 'Framework/Vue.php';
 
 $event = [
     'id' => '996',
@@ -33,5 +33,5 @@ $players = [
     ]
 ];
 
-$vue = new Vue('ModifierEvent');
+$vue = new Vue('modifier', 'Events');
 $vue->generer(['event' => $event, 'places' => $places, 'players' => $players]);

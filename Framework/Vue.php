@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Configuration.php';
+
     class Vue {
 
         // Nom du fichier associé à la vue
@@ -8,18 +10,28 @@
         // Titre de la vue (défini dans le fichier vue)
         private $titre;
 
-        public function __construct($action) {
-            // Détermination du nom du fichier vue à partir de l'action
-            $this->fichier = "Vue/vue" . $action . ".php";
+        public function __construct($action, $controleur = "") {
+            // Détermination du nom du fichier vue à partir de l'action et du constructeur
+            // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
+            $fichier = "Vue/";
+            if ($controleur != "") {
+                $fichier = $fichier . $controleur . "/";
+            }
+            $this->fichier = $fichier . $action . ".php";
         }
 
         // Génère et affiche la vue
-        public function generer($donnees = NULL) {
+        public function generer($donnees) {
             // Génération de la partie spécifique de la vue
             $contenu = $this->genererFichier($this->fichier, $donnees);
+            // On définit une variable locale accessible par la vue pour la racine Web
+            // Il s'agit du chemin vers le site sur le serveur Web
+            // Nécessaire pour les URI de type controleur/action/id
+            $racineWeb = Configuration::get("racineWeb", "/");
             // Génération du gabarit commun utilisant la partie spécifique
-            $vue = $this->genererFichier('Vue/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu));
-            // Renvoi de la vue au navigateur
+            $vue = $this->genererFichier('Vue/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu,
+                    'racineWeb' => $racineWeb));
+            // Renvoi de la vue générée au navigateur
             echo $vue;
         }
 
@@ -27,10 +39,7 @@
         private function genererFichier($fichier, $donnees) {
             if (file_exists($fichier)) {
                 // Rend les éléments du tableau $donnees accessibles dans la vue
-                if ($donnees != NULL) {
-                    extract($donnees);
-                }
-
+                extract($donnees);
                 // Démarrage de la temporisation de sortie
                 ob_start();
                 // Inclut le fichier vue
@@ -42,6 +51,5 @@
                 throw new Exception("Fichier '$fichier' introuvable");
             }
         }
-
     }
 ?>

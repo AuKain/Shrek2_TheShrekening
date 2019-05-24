@@ -3,11 +3,10 @@
 ?>
 
 <p>
-    Êtes-vous certain de vouloir supprimer <?= ($type == 'Player')? "le personnage" : "l'événement"?> : 
-    <strong><?php echo $donnee['name'];?> </strong> ?
+    Êtes-vous certain de vouloir supprimer le personnage : <strong><?= $donnee['name'] ?> </strong> ?
 </p>
 
-<form action="index.php?action=supprimer<?=$type?>" method="post">
+<form action="index.php?controleur=Player&action=supprimer" method="post">
     <input type="hidden" name="id" value="<?=$donnee['id']?>" />
     <input type="submit" value="Confirmer la suppression" /><br/>
     <a href="index.php"><strong>Annuler la suppression</strong></a>

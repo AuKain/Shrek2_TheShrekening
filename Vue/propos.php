@@ -1,7 +1,7 @@
 <?php $this->titre = 'À propos de Shrek 2'; ?>
 
 <h1>Nicolas Parr</h1>
-<p>420-4A4 MO Web et Bases de données.</p>
+<p>420-4A4 MO Web et Bases de données</p>
 <p>Hiver 2019, Collège Montmorency</p>
 <p>Ma base de données :</p><br/>
 <img src="Contenu/maDB.png"><br/>

@@ -21,7 +21,7 @@
         <br/>
         <?php
             if ($titre != 'À propos de Shrek 2') {
-                echo "<a href=\"index.php?action=aPropos\"><h3>~~À propos~~</h3></a>";
+                echo "<a href=\"index.php?controleur=Propos\"><h3>~~À propos~~</h3></a>";
             }
         ?>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Vue/Vue.php';
+require_once 'Framework/Vue.php';
 
 $player = [
     'id' => '666',
@@ -11,7 +11,7 @@ $player = [
     'other_player_details' => 'TESSSST'
 ];
 
-$vue = new Vue("Confirmation");
+$vue = new Vue("Confirmation", "Players");
 $vue->generer(['donnee' => $player, 'type' => 'Player']);
 
 ?>

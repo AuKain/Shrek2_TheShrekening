@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Vue/Vue.php';
+require_once 'Framework/Vue.php';
 
 $events = [
     [

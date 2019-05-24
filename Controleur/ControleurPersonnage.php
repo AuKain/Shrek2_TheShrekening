@@ -1,8 +1,9 @@
 <?php
 
 require_once 'Modele/Personnage.php';
+require_once 'Framework/Controleur.php';
 
-class ControleurPersonnage {
+class ControleurPersonnage extends Controleur {
 
     private $personnage;
 
@@ -10,10 +11,11 @@ class ControleurPersonnage {
         $this->personnage = new Personnage();
     }
 
-// recherche et retourne les noms pour l'autocomplete
-    public function quelsPersos($term) {
+    // recherche et retourne les noms pour l'autocomplete
+    public function index() {
+        $term = $this->requete->getParametre('term');
         echo $this->personnage->searchPerso($term);
     }
-
 }
+
 ?>
