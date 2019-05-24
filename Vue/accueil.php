@@ -22,7 +22,7 @@
 <?php 
     echo '<h2>Les personnnages du film Shrek 2</h2>';
 
-    echo '<table><tr><th></th><th></th><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th></tr>';
+    echo '<table><tr><th></th><th></th><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th><th>Photo</th></tr>';
     foreach ($players as $player)
     {
         echo '<tr><td><a href="index.php?controleur=Player&action=modifier&id=' . $this->nettoyer($player['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Player&action=confirmer&id=' . 
@@ -31,7 +31,8 @@
             $this->nettoyer($player['courriel']) . '</td><td>' . 
             $this->nettoyer($player['gender']) . '</td><td>' . 
             $this->nettoyer($player['number_of_legs']) . '</td><td>' . 
-            $this->nettoyer($player['other_player_details']) . '</td></tr>';
+            $this->nettoyer($player['other_player_details']) . '</td><td>' .
+            $this->nettoyer($player['image']) . '</td></tr>';
     }
 
     echo '</table>';
@@ -67,7 +68,7 @@
     </p>
 </form>
 
-<form action="index.php?controleur=Player&action=ajouter" method="post">
+<form action="index.php?controleur=Player&action=ajouter" method="post" enctype="multipart/form-data">
     <h2>Ajouter un personnage au film Shrek 2!</h2>
     <p>
         <label for="name">Personnage</label> : <input class="ui-autocomplete-input" type="text" name="name" id="auto" /> <br/>
@@ -79,6 +80,7 @@
             </select><br/>
         <label for="number_of_legs">Nombre de jambes</label> : <input type="text" name="number_of_legs" id="number_of_legs" value="2" /><br/>
         <label for="other_player_details">Autres détails</label> : <textarea type="text" name="other_player_details" id="other_player_details" >Autres détails ici</textarea><br/>
+        <label for="image">Photo</label> : <input type="file" name="image" id="image" /><br/>
         <input type="hidden" name="table" value="Player" />
         <input type="submit" value="Envoyer" /><br/>
     </p>

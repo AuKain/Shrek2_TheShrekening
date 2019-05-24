@@ -16,11 +16,14 @@ class ControleurPlayer extends Controleur {
     }
 
     public function ajouter() {
+        var_dump($this->requete->getParam());
+
         $player = [
             'name' => $this->requete->getParametre('name'),
             'courriel' => $this->requete->getParametre('courriel'),
             'gender' => $this->requete->getParametre('gender'),
             'number_of_legs' => $this->requete->getParametre('number_of_legs'),
+            'image' => $this->requete->getParametre('image'),
             'other_player_details' => $this->requete->getParametre('other_player_details')
         ];
 
