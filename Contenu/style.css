@@ -1,0 +1,53 @@
+th, tr, td
+{
+    text-align: left;
+}
+img.photo
+{
+    max-height: 50px;
+}
+img
+{
+    max-width: 700px;
+}
+a
+{
+    color: #00BB00
+}
+a.propos:link 
+{
+    color: #0000EE;
+}
+a.propos:visited, a.propos:hover {
+    color: #551A8B;
+}
+a:hover
+{
+    color: #007700;
+}
+body
+{
+    
+    background-image: url("swamp.png");
+    background-size: cover;
+}
+
+form
+{
+    display: table;
+    width: 350px;
+    text-align: center;
+}
+p     
+{
+    display: table-row;
+}
+label
+{
+    display: table-cell;
+}
+input, textarea, select
+{
+    display: table-cell;
+    width: 100%;
+}

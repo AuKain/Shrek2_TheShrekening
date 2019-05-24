@@ -33,7 +33,7 @@
             $this->nettoyer($player['number_of_legs']) . '</td><td>' . 
             $this->nettoyer($player['other_player_details']) . '</td><td>';
             if ($this->nettoyer($player['photo']) != "") {
-                echo '<img src="' . 'Contenu/Images/' . $this->nettoyer($player['photo']) . '">';
+                echo '<img class="photo" src="' . $racineWeb . 'Contenu/Images/' . $this->nettoyer($player['photo']) . '">';
             }
             echo '</td></tr>';
             
@@ -41,51 +41,77 @@
 
     echo '</table>';
 ?>
-
-<form action="index.php?controleur=Event&action=ajouter" method="post">
-    <h2>Ajouter un événement au film Shrek 2!</h2>
+<h2>Ajouter un événement au film Shrek 2!</h2>
+<form action="index.php?controleur=Event&action=ajouter" method="post" class="container">
+    
     <p>
-        <label for="event">Événement</label> : <input type="text" name="event" id="event" /><br/>
-        <label for="place">Endroit</label> : 
-            <select id="place" name="place" >
-            <?php
-                foreach ($places as $place)
-                {
-                    echo '<option value="' . $this->nettoyer($place['place_id']) . '">' . 
-                    $this->nettoyer($place['place_name']) . '</option>';
-                }
-            ?>
-            </select><br/>
-        <label for="player">Personnage</label> : 
-            <select id="player" name="player" >
-            <?php
-                foreach ($players as $player)
-                {
-                    echo '<option value="' . $this->nettoyer($player['id']) . '" >' . 
-                    $this->nettoyer($player['name']) . '</option>';
-                }
-            ?>
-            </select><br/>
-        <label for="description">Description</label> : <textarea type="text" name="description" id="description" >Description de la scène</textarea><br/>
-        <label for="other_info">Autres détails</label> : <textarea type="text" name="other_info" id="other_info" >Autres détails ici</textarea><br/>
-        <input type="submit" value="Envoyer" /><br/>
+        <label for="event">Événement : </label><input type="text" name="event" id="event" /><br/>
     </p>
+    <p>
+        <label for="place">Endroit : </label>
+        <select id="place" name="place" >
+        <?php
+            foreach ($places as $place)
+            {
+                echo '<option value="' . $this->nettoyer($place['place_id']) . '">' . 
+                $this->nettoyer($place['place_name']) . '</option>';
+            }
+        ?>
+        </select><br/>
+    </p>
+    <p>
+        <label for="player">Personnage : </label> 
+        <select id="player" name="player" >
+        <?php
+            foreach ($players as $player)
+            {
+                echo '<option value="' . $this->nettoyer($player['id']) . '" >' . 
+                $this->nettoyer($player['name']) . '</option>';
+            }
+        ?>
+        </select><br/>
+    </p>
+    <p>
+        <label for="description">Description : </label><textarea type="text" name="description" id="description" >Description de la scène</textarea><br/>
+    </p>
+    <p>
+        <label for="other_info">Autres détails : </label><textarea type="text" name="other_info" id="other_info" >Autres détails ici</textarea><br/>
+    </p>
+    <p>
+        <label></label><input type="submit" value="Envoyer" /><br/>
+    </p>
+    
 </form>
 
+<br/><h2>Ajouter un personnage au film Shrek 2!</h2>
 <form action="index.php?controleur=Player&action=ajouter" method="post" enctype="multipart/form-data">
-    <h2>Ajouter un personnage au film Shrek 2!</h2>
+    
     <p>
-        <label for="name">Personnage</label> : <input class="ui-autocomplete-input" type="text" name="name" id="auto" /> <br/>
-        <label for="courriel">Adresse courriel</label> : <input type="text" name="courriel" id="courriel" value="exemple@domaine.com" /><br/>
-        <label for="gender">Genre</label> : 
-            <select id="gender" name="gender" >
-                <option value="M">Homme</option>
-                <option value="F">Femme</option>
-            </select><br/>
-        <label for="number_of_legs">Nombre de jambes</label> : <input type="text" name="number_of_legs" id="number_of_legs" value="2" /><br/>
-        <label for="other_player_details">Autres détails</label> : <textarea type="text" name="other_player_details" id="other_player_details" >Autres détails ici</textarea><br/>
-        <label for="photo">Photo</label> : <input type="file" name="photo" id="photo" /><br/>
+        <label for="name">Personnage : </label><input class="ui-autocomplete-input" type="text" name="name" id="auto" /> <br/>
+    </p>
+    <p>
+        <label for="courriel">Adresse courriel : </label><input type="text" name="courriel" id="courriel" value="exemple@domaine.com" /><br/>
+    </p>
+    <p>
+        <label for="gender">Genre : </label>
+        <select id="gender" name="gender" >
+            <option value="M">Homme</option>
+            <option value="F">Femme</option>
+        </select><br/>
+    </p>
+    <p>
+        <label for="number_of_legs">Nombre de jambes : </label><input type="text" name="number_of_legs" id="number_of_legs" value="2" /><br/>
+    </p>
+    <p>
+        <label for="other_player_details">Autres détails : </label><textarea type="text" name="other_player_details" id="other_player_details" >Autres détails ici</textarea><br/>
+    </p>
+    <p>
+        <label for="photo">Photo : </label><input type="file" name="photo" id="photo" /><br/>
+    </p>
+    <p>
         <input type="hidden" name="table" value="Player" />
-        <input type="submit" value="Envoyer" /><br/>
+    </p>
+    <p>
+        <label></label><input class="button" type="submit" value="Envoyer" /><br/>
     </p>
 </form>
