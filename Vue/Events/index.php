@@ -3,7 +3,7 @@
     
     echo '<h2>Les événements du film Shrek 2</h2>';
     // Affichage de chaque commentaire (toutes les données sont protégées par htmlspecialchars)
-    echo '<table><tr><th></th><th></th><th>Nom de l\'événement</th><th>Endroit</th><th>Personnage</th><th>Description</th><th>Autres détails</th></tr>';
+    echo '<table><tr><th>Nom de l\'événement</th><th>Endroit</th><th>Personnage</th><th>Description</th><th>Autres détails</th></tr>';
     foreach ($events as $event)
     {
         echo '<tr><td>' . $this->nettoyer($event['name']) . '</td><td>' . 
@@ -20,7 +20,7 @@
 <?php 
     echo '<h2>Les personnnages du film Shrek 2</h2>';
 
-    echo '<table><tr><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th><th>Photo</th></tr>';
+    echo '<table><tr><th></th><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th><th>Photo</th></tr>';
     foreach ($players as $player)
     {
         echo '<tr><td><a href="index.php?controleur=Player&action=modifier&id=' . $this->nettoyer($player['id']) . '">[modifier]</a></td><td>' .
