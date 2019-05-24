@@ -79,8 +79,4 @@ class Requete {
         $this->parametres[$nom] = $valeur;
     }
 
-    public function getParam() {
-        return $this->parametres;
-    }
-
 }

@@ -8,11 +8,15 @@
     <style>
         form
         {
-            text-align:center;
+            text-align: center;
         }
         th, tr, td
         {
-            text-align:left;
+            text-align: left;
+        }
+        img
+        {
+            max-height: 40px;
         }
     </style>
     <body>

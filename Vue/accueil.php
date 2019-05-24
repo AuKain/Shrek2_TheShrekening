@@ -31,8 +31,12 @@
             $this->nettoyer($player['courriel']) . '</td><td>' . 
             $this->nettoyer($player['gender']) . '</td><td>' . 
             $this->nettoyer($player['number_of_legs']) . '</td><td>' . 
-            $this->nettoyer($player['other_player_details']) . '</td><td>' .
-            $this->nettoyer($player['image']) . '</td></tr>';
+            $this->nettoyer($player['other_player_details']) . '</td><td>';
+            if ($this->nettoyer($player['photo']) != "") {
+                echo '<img src="' . 'Contenu/Images/' . $this->nettoyer($player['photo']) . '">';
+            }
+            echo '</td></tr>';
+            
     }
 
     echo '</table>';
@@ -80,7 +84,7 @@
             </select><br/>
         <label for="number_of_legs">Nombre de jambes</label> : <input type="text" name="number_of_legs" id="number_of_legs" value="2" /><br/>
         <label for="other_player_details">Autres détails</label> : <textarea type="text" name="other_player_details" id="other_player_details" >Autres détails ici</textarea><br/>
-        <label for="image">Photo</label> : <input type="file" name="image" id="image" /><br/>
+        <label for="photo">Photo</label> : <input type="file" name="photo" id="photo" /><br/>
         <input type="hidden" name="table" value="Player" />
         <input type="submit" value="Envoyer" /><br/>
     </p>

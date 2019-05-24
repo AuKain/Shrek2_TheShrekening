@@ -6,7 +6,7 @@
 
         // Renvoie les informations sur un player
         public function getPlayer($idPlayer) {
-            $sql = 'SELECT player_id as "id", name, courriel, gender, number_of_legs, photo as "image", other_player_details from Players where player_id = ?';
+            $sql = 'SELECT player_id as "id", name, courriel, gender, number_of_legs, photo, other_player_details from Players where player_id = ?';
             $player = $this->executerRequete($sql, [$idPlayer]);
 
             if ($player->rowCount() == 1)
@@ -18,7 +18,7 @@
 
         // Renvoie la liste de tous les players
         public function getPlayers() {
-            $sql = 'SELECT player_id as "id", name, courriel, gender, number_of_legs, photo as "image", other_player_details from Players order by player_id';
+            $sql = 'SELECT player_id as "id", name, courriel, gender, number_of_legs, photo, other_player_details from Players order by player_id';
             $players = $this->executerRequete($sql);
             return $players;
         }
@@ -39,9 +39,9 @@
 
         // Ajoute un personnage
         public function setPlayer($ajout) {
-            $fichierImage = $this->enregistrerImage($ajout['image']);
+            $fichierphoto = $this->enregistrerImage($ajout['photo']);
             $sql = 'INSERT INTO Players (name, courriel, gender, number_of_legs, photo, other_player_details) VALUES(?, ?, ?, ?, ?, ?)';
-            $ajouts = $this->executerRequete($sql, [$ajout['name'], $ajout['courriel'], $ajout['gender'], $ajout['number_of_legs'], $fichierImage, $ajout['other_player_details']]);
+            $ajouts = $this->executerRequete($sql, [$ajout['name'], $ajout['courriel'], $ajout['gender'], $ajout['number_of_legs'], $fichierphoto, $ajout['other_player_details']]);
             return $ajouts;
         }
 
