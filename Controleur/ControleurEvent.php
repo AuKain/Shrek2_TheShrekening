@@ -71,5 +71,17 @@ class ControleurEvent extends Controleur {
         $this->event->supprimerEvent($id);
         header('Location:index.php');
     }
+
+    public function retablir() {
+        $events = $this->event->getDeadEvents();
+        $vue = new Vue("retablir", "Events");
+        $vue->generer(['events' => $events]);
+    }
+
+    public function revivre() {
+        $id = $this->requete->getParametreId('id');
+        $this->event->unSupprimerEvent($id);
+        header('Location:index.php');
+    }
 }
 ?>

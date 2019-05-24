@@ -6,18 +6,18 @@
     echo '<table><tr><th></th><th></th><th>Nom de l\'événement</th><th>Endroit</th><th>Personnage</th><th>Description</th><th>Autres détails</th></tr>';
     foreach ($events as $event)
     {
-        echo '<tr><td><a href="index.php?controleur=Event&action=modifier&id=' . $event['id'] . '">[modifier]</a></td><td><a href="index.php?controleur=Event&action=confirmer&id=' . 
-            $event['id'] . '">[supprimer]</a></td><td>' .
-            htmlspecialchars($event['name']) . '</td><td>' . 
-            htmlspecialchars($event['place_name']) . '</td><td>' . 
-            htmlspecialchars($event['player_name']) . '</td><td>' . 
-            htmlspecialchars($event['description']) . '</td><td>' . 
-            htmlspecialchars($event['other_details']) . '</td></tr>';
+        echo '<tr><td><a href="index.php?controleur=Event&action=modifier&id=' . $this->nettoyer($event['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Event&action=confirmer&id=' . 
+            $this->nettoyer($event['id']) . '">[supprimer]</a></td><td>' .
+            htmlspecialchars($this->nettoyer($event['name'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($event['place_name'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($event['player_name'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($event['description'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($event['other_details'])) . '</td></tr>';
     }
 
     echo '</table>';
-?><br/>
-
+?>
+<h4>Oh non! J'ai supprimé un événement du meilleur film ever par accident... <a href="index.php?controleur=Event&action=retablir">Le rétablir?</a></h4><br/>
 
 <?php 
     echo '<h2>Les personnnages du film Shrek 2</h2>';
@@ -25,13 +25,13 @@
     echo '<table><tr><th></th><th></th><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th></tr>';
     foreach ($players as $player)
     {
-        echo '<tr><td><a href="index.php?controleur=Player&action=modifier&id=' . $player['id'] . '">[modifier]</a></td><td><a href="index.php?controleur=Player&action=confirmer&id=' . 
-            $player['id'] . '">[supprimer]</a></td><td>' .
-            htmlspecialchars($player['name']) . '</td><td>' . 
-            htmlspecialchars($player['courriel']) . '</td><td>' . 
-            htmlspecialchars($player['gender']) . '</td><td>' . 
-            htmlspecialchars($player['number_of_legs']) . '</td><td>' . 
-            htmlspecialchars($player['other_player_details']) . '</td></tr>';
+        echo '<tr><td><a href="index.php?controleur=Player&action=modifier&id=' . $this->nettoyer($player['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Player&action=confirmer&id=' . 
+            $this->nettoyer($player['id']) . '">[supprimer]</a></td><td>' .
+            htmlspecialchars($this->nettoyer($player['name'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($player['courriel'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($player['gender'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($player['number_of_legs'])) . '</td><td>' . 
+            htmlspecialchars($this->nettoyer($player['other_player_details'])) . '</td></tr>';
     }
 
     echo '</table>';
@@ -46,8 +46,8 @@
             <?php
                 foreach ($places as $place)
                 {
-                    echo '<option value="' . htmlspecialchars($place['place_id']) . '">' . 
-                    htmlspecialchars($place['place_name']) . '</option>';
+                    echo '<option value="' . htmlspecialchars($this->nettoyer($place['place_id'])) . '">' . 
+                    htmlspecialchars($this->nettoyer($place['place_name'])) . '</option>';
                 }
             ?>
             </select><br/>
@@ -56,8 +56,8 @@
             <?php
                 foreach ($players as $player)
                 {
-                    echo '<option value="' . htmlspecialchars($player['id']) . '" >' . 
-                    htmlspecialchars($player['name']) . '</option>';
+                    echo '<option value="' . htmlspecialchars($this->nettoyer($player['id'])) . '" >' . 
+                    htmlspecialchars($this->nettoyer($player['name'])) . '</option>';
                 }
             ?>
             </select><br/>

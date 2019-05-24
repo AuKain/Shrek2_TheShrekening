@@ -17,6 +17,8 @@ if (isset($_GET['test'])) {
         require 'Tests/Vues/testVueConfirmation.php';
     } else if ($_GET['test'] == 'vueErreur') {
         require 'Tests/Vues/testVueErreur.php';
+    } else if ($_GET['test'] == 'vueRetablir') {
+        require 'Tests/Vues/testVueRetablir.php';
         
     } else {
         echo '<h3>Test inexistant!!!</h3>';
@@ -49,6 +51,9 @@ if (isset($_GET['test'])) {
     </li>
     <li>
         <a href="test.php?test=vueConfirmation">Confirmation</a>
+    </li>
+    <li>
+        <a href="test.php?test=vueRetablir">Rétablir</a>
     </li>
     <li>
         <a href="test.php?test=vueErreur">Erreur</a>
