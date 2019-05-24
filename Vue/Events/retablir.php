@@ -7,11 +7,11 @@
     foreach ($events as $event)
     {
         echo '<tr></td><td><a href="index.php?controleur=Event&action=revivre&id=' . $this->nettoyer($event['id']) . '">[rétablir!]</a></td><td>' .
-            htmlspecialchars($this->nettoyer($event['name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['place_name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['player_name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['description'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['other_details'])) . '</td></tr>';
+            $this->nettoyer($event['name']) . '</td><td>' . 
+            $this->nettoyer($event['place_name']) . '</td><td>' . 
+            $this->nettoyer($event['player_name']) . '</td><td>' . 
+            $this->nettoyer($event['description']) . '</td><td>' . 
+            $this->nettoyer($event['other_details']) . '</td></tr>';
     }
 
     echo '</table>';

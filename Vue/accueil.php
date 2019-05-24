@@ -8,11 +8,11 @@
     {
         echo '<tr><td><a href="index.php?controleur=Event&action=modifier&id=' . $this->nettoyer($event['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Event&action=confirmer&id=' . 
             $this->nettoyer($event['id']) . '">[supprimer]</a></td><td>' .
-            htmlspecialchars($this->nettoyer($event['name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['place_name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['player_name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['description'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($event['other_details'])) . '</td></tr>';
+            $this->nettoyer($event['name']) . '</td><td>' . 
+            $this->nettoyer($event['place_name']) . '</td><td>' . 
+            $this->nettoyer($event['player_name']) . '</td><td>' . 
+            $this->nettoyer($event['description']) . '</td><td>' . 
+            $this->nettoyer($event['other_details']) . '</td></tr>';
     }
 
     echo '</table>';
@@ -27,11 +27,11 @@
     {
         echo '<tr><td><a href="index.php?controleur=Player&action=modifier&id=' . $this->nettoyer($player['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Player&action=confirmer&id=' . 
             $this->nettoyer($player['id']) . '">[supprimer]</a></td><td>' .
-            htmlspecialchars($this->nettoyer($player['name'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($player['courriel'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($player['gender'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($player['number_of_legs'])) . '</td><td>' . 
-            htmlspecialchars($this->nettoyer($player['other_player_details'])) . '</td></tr>';
+            $this->nettoyer($player['name']) . '</td><td>' . 
+            $this->nettoyer($player['courriel']) . '</td><td>' . 
+            $this->nettoyer($player['gender']) . '</td><td>' . 
+            $this->nettoyer($player['number_of_legs']) . '</td><td>' . 
+            $this->nettoyer($player['other_player_details']) . '</td></tr>';
     }
 
     echo '</table>';
@@ -46,8 +46,8 @@
             <?php
                 foreach ($places as $place)
                 {
-                    echo '<option value="' . htmlspecialchars($this->nettoyer($place['place_id'])) . '">' . 
-                    htmlspecialchars($this->nettoyer($place['place_name'])) . '</option>';
+                    echo '<option value="' . $this->nettoyer($place['place_id']) . '">' . 
+                    $this->nettoyer($place['place_name']) . '</option>';
                 }
             ?>
             </select><br/>
@@ -56,8 +56,8 @@
             <?php
                 foreach ($players as $player)
                 {
-                    echo '<option value="' . htmlspecialchars($this->nettoyer($player['id'])) . '" >' . 
-                    htmlspecialchars($this->nettoyer($player['name'])) . '</option>';
+                    echo '<option value="' . $this->nettoyer($player['id']) . '" >' . 
+                    $this->nettoyer($player['name']) . '</option>';
                 }
             ?>
             </select><br/>
