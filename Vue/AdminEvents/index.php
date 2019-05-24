@@ -6,7 +6,7 @@
     echo '<table><tr><th></th><th></th><th>Nom de l\'événement</th><th>Endroit</th><th>Personnage</th><th>Description</th><th>Autres détails</th></tr>';
     foreach ($events as $event)
     {
-        echo '<tr><td><a href="index.php?controleur=Event&action=modifier&id=' . $this->nettoyer($event['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Event&action=confirmer&id=' . 
+        echo '<tr><td><a href="index.php?controleur=AdminEvent&action=modifier&id=' . $this->nettoyer($event['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=AdminEvent&action=confirmer&id=' . 
             $this->nettoyer($event['id']) . '">[supprimer]</a></td><td>' .
             $this->nettoyer($event['name']) . '</td><td>' . 
             $this->nettoyer($event['place_name']) . '</td><td>' . 
@@ -25,7 +25,7 @@
     echo '<table><tr><th></th><th></th><th>Nom</th><th>Courriel</th><th>Genre</th><th>Jambes</th><th>Autres détails</th><th>Photo</th></tr>';
     foreach ($players as $player)
     {
-        echo '<tr><td><a href="index.php?controleur=Player&action=modifier&id=' . $this->nettoyer($player['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=Player&action=confirmer&id=' . 
+        echo '<tr><td><a href="index.php?controleur=AdminPlayer&action=modifier&id=' . $this->nettoyer($player['id']) . '">[modifier]</a></td><td><a href="index.php?controleur=AdminPlayer&action=confirmer&id=' . 
             $this->nettoyer($player['id']) . '">[supprimer]</a></td><td>' .
             $this->nettoyer($player['name']) . '</td><td>' . 
             $this->nettoyer($player['courriel']) . '</td><td>' . 
@@ -42,7 +42,7 @@
     echo '</table>';
 ?>
 <h2>Ajouter un événement au film Shrek 2!</h2>
-<form action="index.php?controleur=Event&action=ajouter" method="post" class="container">
+<form action="index.php?controleur=AdminEvent&action=ajouter" method="post" class="container">
     
     <p>
         <label for="event">Événement : </label><input type="text" name="event" id="event" /><br/>
@@ -84,7 +84,7 @@
 </form>
 
 <br/><h2>Ajouter un personnage au film Shrek 2!</h2>
-<form action="index.php?controleur=Player&action=ajouter" method="post" enctype="multipart/form-data">
+<form action="index.php?controleur=AdminPlayer&action=ajouter" method="post" enctype="multipart/form-data">
     
     <p>
         <label for="name">Personnage : </label><input class="ui-autocomplete-input" type="text" name="name" id="auto" /> <br/>
@@ -108,9 +108,9 @@
     <p>
         <label for="photo">Photo : </label><input type="file" name="photo" id="photo" /><br/>
     </p>
-    <p>
-        <input type="hidden" name="table" value="Player" />
-    </p>
+    
+    <input type="hidden" name="table" value="Player" />
+    
     <p>
         <label></label><input class="button" type="submit" value="Envoyer" /><br/>
     </p>

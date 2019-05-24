@@ -11,7 +11,7 @@ class ControleurPropos extends Controleur {
     // recherche et retourne les noms pour l'autocomplete
     public function index() {
         $vue = new Vue("propos");
-        $vue->generer([null]);
+        $vue->generer([null], $requete);
     }
 }
 

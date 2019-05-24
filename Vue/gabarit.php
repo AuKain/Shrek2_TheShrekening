@@ -8,7 +8,14 @@
         <link rel="stylesheet" href="Contenu/style.css" type="text/css" />
     </head>
     <body>
-        <a href="index.php"><h1>Shrek 2 the Movie the Game the TP</h1></a><br/>
+        <a href="index.php"><h1>Shrek 2 the Movie the Game the TP</h1></a>
+        <?php if ($utilisateur != '') : ?>
+            <h3>Bonjour <?= $utilisateur['nom'] ?>,
+                <a href="index.php?controleur=Utilisateurs&action=deconnecter">[Se déconnecter]</a>
+            </h3>
+        <?php else : ?>
+            <h3><a href="index.php?controleur=Utilisateurs&action=index">[Se connecter]</a></h3>
+        <?php endif; ?><br/>
         <?= $contenu ?>
         <?php
             if ($titre != 'À propos de Shrek 2') {

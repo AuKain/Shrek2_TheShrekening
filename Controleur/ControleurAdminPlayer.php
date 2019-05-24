@@ -2,8 +2,9 @@
 
 require_once 'Modele/Player.php';
 require_once 'Framework/Vue.php';
+require_once 'Controleur/ControleurAdmin.php';
 
-class ControleurPlayer extends Controleur {
+class ControleurAdminPlayer extends ControleurAdmin {
 
     private $player;
 
@@ -42,7 +43,7 @@ class ControleurPlayer extends Controleur {
     public function modifier() {
         $id = $this->requete->getParametreId('id');
         $player = $this->player->getPlayer($id);
-        $vue = new Vue("modifier", "Players");
+        $vue = new Vue("modifier", "AdminPlayers");
         $vue->generer(['player' => $player], $requete);
     }
 
@@ -61,7 +62,7 @@ class ControleurPlayer extends Controleur {
 
     public function confirmer() {
         $id = $this->requete->getParametreId('id');
-        $vue = new Vue("confirmation", "Players");
+        $vue = new Vue("confirmation", "AdminPlayers");
         $vue->generer(['donnee' => $this->player->getPlayer($id), 'type' => $type], $requete);
     }
 

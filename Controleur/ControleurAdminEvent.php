@@ -4,8 +4,9 @@ require_once 'Modele/Event.php';
 require_once 'Modele/Player.php';
 require_once 'Modele/Place.php';
 require_once 'Framework/Vue.php';
+require_once 'Controleur/ControleurAdmin.php';
 
-class ControleurEvent extends Controleur {
+class ControleurAdminEvent extends ControleurAdmin {
 
     private $event;
     private $player;
@@ -21,7 +22,7 @@ class ControleurEvent extends Controleur {
         $events = $this->event->getEvents()->fetchAll();
         $players = $this->player->getPlayers()->fetchAll();
         $places = $this->place->getPlaces()->fetchAll();
-        $vue = new Vue("Events/index");
+        $vue = new Vue("index", "AdminEvents");
         $vue->generer(['events' => $events, 'players' => $players, 'places' => $places], $requete);
     }
 
@@ -62,7 +63,7 @@ class ControleurEvent extends Controleur {
     public function confirmer() {
         $id = $this->requete->getParametreId('id');
         $type = 'Events';
-        $vue = new Vue("confirmation", "Events");
+        $vue = new Vue("confirmation", "AdminEvents");
         $vue->generer(['donnee' => $this->event->getEvent($id), 'type' => $type], $requete);
     }
 
@@ -74,7 +75,7 @@ class ControleurEvent extends Controleur {
 
     public function retablir() {
         $events = $this->event->getDeadEvents();
-        $vue = new Vue("retablir", "Events");
+        $vue = new Vue("retablir", "AdminEvents");
         $vue->generer(['events' => $events], $requete);
     }
 
