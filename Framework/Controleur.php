@@ -77,7 +77,10 @@ abstract class Controleur {
     protected function rediriger($controleur, $action = null) {
         $racineWeb = Configuration::get("racineWeb", "/");
         // Redirection vers l'URL /racine_site/controleur/action
-        header("Location:" . $racineWeb . $controleur . "/" . $action);
+        if ($controleur != "") {
+            header("Location:" . $racineWeb . $controleur . "/" . $action);
+        } else {
+            header("Location:" . $racineWeb);
+        }
     }
-
 }
