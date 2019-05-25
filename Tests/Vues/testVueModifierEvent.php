@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Framework/Vue.php';
+require_once 'Framework/Requete.php';
 
 $event = [
     'id' => '996',
@@ -33,5 +34,5 @@ $players = [
     ]
 ];
 
-$vue = new Vue('modifier', 'Events');
-$vue->generer(['event' => $event, 'places' => $places, 'players' => $players]);
+$vue = new Vue('modifier', 'AdminEvents');
+$vue->generer(['event' => $event, 'places' => $places, 'players' => $players], new Requete('test'));

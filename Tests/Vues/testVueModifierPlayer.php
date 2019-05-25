@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Framework/Vue.php';
+require_once 'Framework/Requete.php';
 
 $player = [
     'id' => '996',
@@ -11,5 +12,5 @@ $player = [
     'other_player_details' => 'aaaaa'
 ];
 
-$vue = new Vue('modifier', 'Players');
-$vue->generer(['player' => $player]);
+$vue = new Vue('modifier', 'AdminPlayers');
+$vue->generer(['player' => $player], new Requete('test'));
