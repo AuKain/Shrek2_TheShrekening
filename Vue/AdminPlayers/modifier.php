@@ -30,7 +30,4 @@
     </p>
         <label></label><a href="index.php">Annuler les modifications</a>
     </p>
-    
 </form>
-<br/><br/>
-<p style="color: #00BB00"><b>Malheureusement, il n'est pas possible de changer la photo d'un acteur...</b></p>

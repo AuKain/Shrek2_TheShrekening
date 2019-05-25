@@ -2,15 +2,9 @@
 
 require_once 'Framework/Modele.php';
 
-/**
- * Modélise un utilisateur du blog
- *
- * @author Baptiste Pesquet
- */
 class Utilisateur extends Modele {
 
-    /**
-     * Vérifie qu'un utilisateur existe dans la BD
+    /** Vérifie qu'un utilisateur existe dans la BD
      * 
      * @param string $login Le login
      * @param string $mdp Le mot de passe
@@ -23,8 +17,7 @@ class Utilisateur extends Modele {
         return ($utilisateur->rowCount() == 1);
     }
 
-    /**
-     * Renvoie un utilisateur existant dans la BD
+    /** Renvoie un utilisateur existant dans la BD
      * 
      * @param string $login Le login
      * @param string $mdp Le mot de passe
@@ -43,3 +36,5 @@ class Utilisateur extends Modele {
     }
 
 }
+
+?>

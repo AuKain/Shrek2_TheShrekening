@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Framework/Vue.php';
+require_once 'Framework/Requete.php';
 
 $events = [
     [
@@ -15,5 +16,5 @@ $events = [
     ]
 ];
 
-$vue = new Vue('retablir', 'Events');
-$vue->generer(['events' => $events]);
+$vue = new Vue('retablir', 'AdminEvents');
+$vue->generer(['events' => $events], new Requete('test'));

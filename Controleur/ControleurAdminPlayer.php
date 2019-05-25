@@ -44,7 +44,7 @@ class ControleurAdminPlayer extends ControleurAdmin {
         $id = $this->requete->getParametreId('id');
         $player = $this->player->getPlayer($id);
         $vue = new Vue("modifier", "AdminPlayers");
-        $vue->generer(['player' => $player], $requete);
+        $vue->generer(['player' => $player], $this->requete);
     }
 
     public function mettreAJour() {
@@ -63,7 +63,7 @@ class ControleurAdminPlayer extends ControleurAdmin {
     public function confirmer() {
         $id = $this->requete->getParametreId('id');
         $vue = new Vue("confirmation", "AdminPlayers");
-        $vue->generer(['donnee' => $this->player->getPlayer($id), 'type' => $type], $requete);
+        $vue->generer(['donnee' => $this->player->getPlayer($id), 'type' => $type], $this->requete);
     }
 
     public function supprimer() {

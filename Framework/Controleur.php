@@ -65,7 +65,7 @@ abstract class Controleur {
         
         // Instanciation et génération de la vueF
         $vue = new Vue($this->action, $controleur);
-        $vue->generer($donneesVue, $requete);
+        $vue->generer($donneesVue, $this->requete);
     }
     
     /**

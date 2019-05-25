@@ -23,7 +23,7 @@ class ControleurAdminEvent extends ControleurAdmin {
         $players = $this->player->getPlayers()->fetchAll();
         $places = $this->place->getPlaces()->fetchAll();
         $vue = new Vue("index", "AdminEvents");
-        $vue->generer(['events' => $events, 'players' => $players, 'places' => $places], $requete);
+        $vue->generer(['events' => $events, 'players' => $players, 'places' => $places], $this->requete);
     }
 
     public function ajouter() {
@@ -43,8 +43,8 @@ class ControleurAdminEvent extends ControleurAdmin {
         $event = $this->event->getEvent($id);
         $players = $this->player->getPlayers()->fetchAll();
         $places = $this->place->getPlaces()->fetchAll();
-        $vue = new Vue("modifier", "Events");
-        $vue->generer(['event'=> $event, 'players' => $players, 'places' => $places], $requete);
+        $vue = new Vue("modifier", "AdminEvents");
+        $vue->generer(['event'=> $event, 'players' => $players, 'places' => $places], $this->requete);
     }
 
     public function mettreAJour() {
@@ -64,7 +64,7 @@ class ControleurAdminEvent extends ControleurAdmin {
         $id = $this->requete->getParametreId('id');
         $type = 'Events';
         $vue = new Vue("confirmation", "AdminEvents");
-        $vue->generer(['donnee' => $this->event->getEvent($id), 'type' => $type], $requete);
+        $vue->generer(['donnee' => $this->event->getEvent($id), 'type' => $type], $this->requete);
     }
 
     public function supprimer() {
@@ -76,7 +76,7 @@ class ControleurAdminEvent extends ControleurAdmin {
     public function retablir() {
         $events = $this->event->getDeadEvents();
         $vue = new Vue("retablir", "AdminEvents");
-        $vue->generer(['events' => $events], $requete);
+        $vue->generer(['events' => $events], $this->requete);
     }
 
     public function revivre() {

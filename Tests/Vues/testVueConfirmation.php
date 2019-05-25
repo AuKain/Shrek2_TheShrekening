@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Framework/Vue.php';
+require_once 'Framework/Requete.php';
 
 $player = [
     'id' => '666',
@@ -11,7 +12,7 @@ $player = [
     'other_player_details' => 'TESSSST'
 ];
 
-$vue = new Vue("Confirmation", "Players");
-$vue->generer(['donnee' => $player, 'type' => 'Player']);
+$vue = new Vue("Confirmation", "AdminPlayers");
+$vue->generer(['donnee' => $player, 'type' => 'Player'], new Requete('test'));
 
 ?>
